@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @param array $arr
+ * @param int $low
+ * @param int $high
+ * @return array
+ */
 function my_qsort(array $arr, int $low, int $high): array
 {
     if ($low < $high) {
@@ -11,10 +17,16 @@ function my_qsort(array $arr, int $low, int $high): array
         $arr = my_qsort($arr, $low, $pi - 1);
         $arr = my_qsort($arr, $pi + 1, $high);
     }
-    
+
     return $arr;
 }
 
+/**
+ * @param array $arr
+ * @param int $low
+ * @param int $high
+ * @return array
+ */
 function partition(array $arr, int $low, int $high): array
 {
     $result = [];
