@@ -1,10 +1,12 @@
 <?php
 
-function my_qsort($arr, $low, $high)
+function my_qsort(array $arr, int $low, int $high): array
 {
     if ($low < $high) {
 
-        $pi = partition($arr, $low, $high);
+        $result = partition($arr, $low, $high);
+        $pi = $result["pi"];
+        $arr = $result["arr"];
 
         $arr = my_qsort($arr, $low, $pi - 1);
         $arr = my_qsort($arr, $pi + 1, $high);
@@ -12,8 +14,10 @@ function my_qsort($arr, $low, $high)
     return $arr;
 }
 
-function partition(&$arr, $low, $high)
+function partition(array $arr, int $low, int $high): array
 {
+    $result = [];
+
     $pivot = $arr[$high];
     $i = ($low - 1);
     for ($j = $low; $j <= $high; $j++) {
@@ -27,7 +31,11 @@ function partition(&$arr, $low, $high)
     $temp = $arr[$i + 1];
     $arr[$i + 1] = $arr[$high];
     $arr[$high] = $temp;
-    return $i + 1;
+
+    $result["pi"] = $i + 1;
+    $result["arr"] = $arr;
+
+    return $result;
 }
 
 $test_arr = ['Jimmy', 9, 'Timothy', 8, 'William', 7, 'butts'];
