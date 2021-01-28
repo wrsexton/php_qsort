@@ -32,10 +32,10 @@ function partition(&$arr, $low, $high)
 
 $test_arr = ['Jimmy', 9, 'Timothy', 8, 'William', 7, 'butts'];
 
+$test_arr_sorted = my_qsort($test_arr, 0, count($test_arr) - 1);
+
 echo "BEFORE:\n";
 print_r($test_arr);
 
-$test_arr = my_qsort($test_arr, 0, count($test_arr) - 1);
-
 echo "AFTER:\n";
-print_r($test_arr);
+print_r($test_arr_sorted);
